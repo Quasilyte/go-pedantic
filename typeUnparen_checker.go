@@ -17,6 +17,7 @@ func init() {
 	info.Summary = "Detects unneded parenthesis inside type expressions and suggests to remove them"
 	info.Before = `type foo [](func([](func())))`
 	info.After = `type foo []func([]func())`
+
 	lintpack.AddChecker(&info, func(ctx *lintpack.CheckerContext) lintpack.FileWalker {
 		return astwalk.WalkerForTypeExpr(&typeUnparenChecker{ctx: ctx}, ctx.TypesInfo)
 	})

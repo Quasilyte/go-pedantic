@@ -18,6 +18,7 @@ func init() {
 filepath := "foo.txt"`
 	info.After = `
 filename := "foo.txt"`
+
 	lintpack.AddChecker(&info, func(ctx *lintpack.CheckerContext) lintpack.FileWalker {
 		ctx.Require.PkgObjects = true
 		return astwalk.WalkerForLocalDef(&importShadowChecker{ctx: ctx}, ctx.TypesInfo)
